@@ -1,3 +1,7 @@
+<?php
+require('header.php');
+require('navigation.php'); ?>
+
 <main class="w-100 m-auto">
 <div class="album py-5 bg-light">
     <div class="container">
@@ -24,3 +28,6 @@
     </div>
 </div>
 </main>
+
+<?php
+require('footer.php'); ?>
