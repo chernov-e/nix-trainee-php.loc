@@ -1,30 +1,43 @@
 <?php
 require('header.php');
-require('navigation.php'); ?>
+require('navigation.php');
+require('data-post.php');
+?>
 
 <main class="w-100 m-auto">
 <div class="album py-5 bg-light">
     <div class="container">
+        <h2>Посты</h2>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div class="col">
-                <div class="card shadow-sm">
-                        <h2>Post title</h2>
+        <?php
+            if (isset($post_array) and !empty($post_array)):
+                foreach ($post_array as $item_post): ?>
 
-                    <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <div class="row my-2">
+                    <div class="col">
+                        <div class="card shadow-sm">
+                                <h3 class="m-2"><?= $item_post["title"]; ?></h3>
+
+                            <div class="card-body">
+                                <p class="card-text"><?= $item_post["content"]; ?></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-sm btn-outline-secondary" href="/post/<?= $item_post["id"]; ?>">
+                                            View
+                                        </a>
+                                    </div>
+                                    <small class="text-muted"><?= $item_post["data_publications"]; ?></small>
+                                </div>
                             </div>
-                            <small class="text-muted">25-06-2022</small>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+
+                <?php
+                endforeach;
+                endif;
+             ?>
+
     </div>
 </div>
 </main>
